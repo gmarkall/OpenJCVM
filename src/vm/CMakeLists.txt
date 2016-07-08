@@ -15,3 +15,5 @@ set(TEST_READUX_SOURCES
 
 add_executable(openjcvm ${VM_SOURCES})
 add_executable(test_readux ${TEST_READUX_SOURCES})
+
+add_test(ReadUx ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test_readux)
