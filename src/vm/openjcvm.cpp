@@ -178,7 +178,6 @@ int main(int argc, char* argv[])
 	CardLibList::libList.push_back(buildJavaLang());
 	CardLibList::libList.push_back(buildJNI());
 
-	//for(i=1;i<argc-2;i++)
 	for(i=1;i<argc-1;i++)
 	{
 		int iDataLength = readBin(argv[i],dataBuffer);
@@ -193,9 +192,6 @@ int main(int argc, char* argv[])
 	//testReadIJC(argv[1]);
 	//testReadDescriptorComp("Descriptor.cap");
 	testRunApplet(argv[i]);
-
-	//CardApplet* pEngine=buildAppletEngine(argv[i+1]);
-	//pEngine->install();
 
 	cin.get();
 	return 0;
