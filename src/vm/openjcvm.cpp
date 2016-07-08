@@ -11,23 +11,9 @@
 #include "library.h"
 #include "javalang.h"
 #include "jni.h"
-
-//Test headers
 #include "readijc.h"
-//#include "../vm_tests/Unit/testReadUx.h"
 
 using namespace std;
-
-int testReadIJC(char* ijcFileName)
-{
-	//TestReadUx::testReadUx();
-	unsigned char* dataBuffer=new unsigned char[10000];
-	int iDataLength = readBin(ijcFileName,dataBuffer);
-	//outputHex(dataBuffer,iDataLength);
-	CardApplet* capp = (CardApplet*)buildApplet(dataBuffer,iDataLength);
-	capp->displayInfo();
-	return 0;
-}
 
 int testReadDescriptorComp(char* capFileName)
 {
