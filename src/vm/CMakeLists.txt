@@ -25,3 +25,5 @@ add_executable(test_readux ${TEST_READUX_SOURCES})
 add_executable(test_readijc ${TEST_READIJC_SOURCES})
 
 add_test(ReadUx ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test_readux)
+add_test(ReadIJC_ShortAdd ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test_readijc
+                          ${CMAKE_SOURCE_DIR}/testdata/ShortAdd.ijc)
