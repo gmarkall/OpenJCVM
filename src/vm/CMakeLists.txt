@@ -9,4 +9,9 @@ set(VM_SOURCES
     vm.cpp
 )
 
+set(TEST_READUX_SOURCES
+    testreadux.cpp
+    installer.cpp)
+
 add_executable(openjcvm ${VM_SOURCES})
+add_executable(test_readux ${TEST_READUX_SOURCES})
