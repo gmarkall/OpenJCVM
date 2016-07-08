@@ -1,64 +1,94 @@
 #include <iostream>
+#include <string.h>
 #include "base.h"
 
-class TestReadUx
-{
-public:
-        static void testReadUx();
-private:
-        static void testReadU1();
-        static void testReadU2();
-        static void testReadU4();
-};
+bool testReadUx(void);
+bool testReadU1(void);
+bool testReadU2(void);
+bool testReadU4(void);
 
-int main(int argc, char **argv)
+bool verbose = false;
+
+int
+main(int argc, char **argv)
 {
-  TestReadUx t;
-  t.testReadUx();
+  if (argc > 1 && (strcmp(argv[1], "-v") == 0))
+    verbose = true;
+
+  if (testReadUx())
+    return 0;
+  else
+    return 1;
 }
 
-void TestReadUx::testReadUx()
+bool
+testReadUx()
 {
-	testReadU1();
-	testReadU2();
-	testReadU4();
+  bool res1 = testReadU1();
+  bool res2 = testReadU2();
+  bool res4 = testReadU4();
+
+  return res1 && res2 && res4;
+}
+
+template<typename T>
+bool check(T expected, T actual)
+{
+  bool good = (expected == actual);
+  if (!good || verbose)
+    std::cout << (good ? "OK" : "NOK") << std::endl;
+  return good;
+}
+
+bool
+testReadU1()
+{
+  u1 dataBuffer[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+  u1 expectedBuffer[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+  int pos = 0;
+  bool good = true;
+  for (size_t i = 0; i < 10; i++)
+  {
+    bool current = check(readU1(dataBuffer, &pos), expectedBuffer[i]);
+    good = good && current;
+  }
+
+  return good;
+}
+
+bool
+testReadU2()
+{
+  u1 dataBuffer[10] = { 1, 2, 1, 4, 1, 6, 1, 8, 1, 10 };
+  u2 expectedBuffer[5] = { 0x102, 0x104, 0x106, 0x108, 0x10A };
+
+  int pos = 0;
+  bool good = true;
+
+  for (size_t i = 0; i < 5; i++)
+  {
+    bool current = check(readU2(dataBuffer, &pos), expectedBuffer[i]);
+    good = good && current;
+  }
+
+  return good;
 };
 
-void TestReadUx::testReadU1()
+bool
+testReadU4()
 {
-	u1 dataBuffer[10]={1,2,3,4,5,6,7,8,9,10};
-	int iPos = 0;
-	
-	std::cout<<(readU1(dataBuffer,&iPos)==(u1)1?"OK":"NOK")<<std::endl;
-	std::cout<<(readU1(dataBuffer,&iPos)==(u1)2?"OK":"NOK")<<std::endl;
-	std::cout<<(readU1(dataBuffer,&iPos)==(u1)3?"OK":"NOK")<<std::endl;
-	std::cout<<(readU1(dataBuffer,&iPos)==(u1)4?"OK":"NOK")<<std::endl;
-	std::cout<<(readU1(dataBuffer,&iPos)==(u1)5?"OK":"NOK")<<std::endl;
-	std::cout<<(readU1(dataBuffer,&iPos)==(u1)6?"OK":"NOK")<<std::endl;
-	std::cout<<(readU1(dataBuffer,&iPos)==(u1)7?"OK":"NOK")<<std::endl;
-	std::cout<<(readU1(dataBuffer,&iPos)==(u1)8?"OK":"NOK")<<std::endl;
-	std::cout<<(readU1(dataBuffer,&iPos)==(u1)9?"OK":"NOK")<<std::endl;
-	std::cout<<(readU1(dataBuffer,&iPos)==(u1)10?"OK":"NOK")<<std::endl;
-};
+  u1 dataBuffer[12] = { 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1 };
+  u4 expectedBuffer[3] = { 1, 0x101, 0x10101 };
 
-void TestReadUx::testReadU2()
-{
-	u1 dataBuffer[10]={1,2,1,4,1,6,1,8,1,10};
-	int iPos = 0;
-	
-	std::cout<<(readU2(dataBuffer,&iPos)==(u2)0x102?"OK":"NOK")<<std::endl;
-	std::cout<<(readU2(dataBuffer,&iPos)==(u2)0x104?"OK":"NOK")<<std::endl;
-	std::cout<<(readU2(dataBuffer,&iPos)==(u2)0x106?"OK":"NOK")<<std::endl;
-	std::cout<<(readU2(dataBuffer,&iPos)==(u2)0x108?"OK":"NOK")<<std::endl;
-	std::cout<<(readU2(dataBuffer,&iPos)==(u2)0x10A?"OK":"NOK")<<std::endl;
-};
+  int pos = 0;
+  bool good;
 
-void TestReadUx::testReadU4()
-{
-	u1 dataBuffer[12]={0,0,0,1,0,0,1,1,0,1,1,1};
-	int iPos = 0;
+  for (size_t i = 0; i < 3; i++)
+  {
+    bool current = check(readU4(dataBuffer, &pos), expectedBuffer[i]);
+    good = good && current;
+  }
 
-	std::cout<<(readU4(dataBuffer,&iPos)==(u4)1?"OK":"NOK")<<std::endl;
-	std::cout<<(readU4(dataBuffer,&iPos)==(u4)0x101?"OK":"NOK")<<std::endl;
-	std::cout<<(readU4(dataBuffer,&iPos)==(u4)0x10101?"OK":"NOK")<<std::endl;
+  return good;
 };
