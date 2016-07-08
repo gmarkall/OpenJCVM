@@ -1516,7 +1516,7 @@ void VirtualMachine::vm_instanceof(u1 aType,u2 sIndex,AbstractApplet* pCA)
 			{
 				COUT<<"\t\tIt is a classref!"<<ENDL;
 
-				//If it is the directly inherited from a class, then we can check the classref with the object's superClassRef. 
+				//If it is the directly inherited from a class, then we can check the classref with the object's superClassRef.
 
 				if(pObj->superClass.classref == makeU2(pCI->info[0],pCI->info[1])){
 					COUT<<"The current object is an instance of class "<<(int)pObj->superClass.classref<<ENDL;
@@ -1542,7 +1542,7 @@ void VirtualMachine::vm_instanceof(u1 aType,u2 sIndex,AbstractApplet* pCA)
 					//pObj->superClass;
 				}
 				else
-				{	
+				{
 					u1 packageIndex = value1 & 0x7F;
 					PackageInfo* pPI = pCA->pImport->packages[packageIndex];
 					CardLibrary *pCL = CardLibList::findLibrary(pPI);
@@ -1555,7 +1555,7 @@ void VirtualMachine::vm_instanceof(u1 aType,u2 sIndex,AbstractApplet* pCA)
 						u2 coffset = pCL->pExport->pClassExport[classtoken]->classOffset;
 
 						COUT<<"\tThe class offset is "<<coffset<<ENDL;
-					
+
 					}
 					else
 					{

@@ -5,7 +5,7 @@
 
 class FieldRef
 {
-	
+
 };
 
 class StaticFieldRef : public FieldRef
@@ -32,7 +32,7 @@ public:
 
 	bool isPrimitiveType()
 	{
-		return (value & 0x80) == 0x80; 
+		return (value & 0x80) == 0x80;
 	};
 
 	bool isReferenceType()
@@ -68,7 +68,7 @@ class PrimitiveType : public Type
 			COUT<<"Type: Unknown"<<ENDL;
 			break;
 		}
-		
+
 	};
 };
 
@@ -159,7 +159,7 @@ public:
 	u1 interfaceCount;
 	u2 fieldCount;
 	u2 methodCount;
-	ClassRef** interfaces;	
+	ClassRef** interfaces;
 	FieldDescriptorInfo** fields;
 	MethodDescriptorInfo** methods;
 	ClassDescriptorInfo(u1 token, u1 accessflags, ClassRef pThisRef, u1 interfacecount,u2 fieldcount, u2 methodcount)
@@ -241,7 +241,7 @@ public:
 	int constPoolCount;
 	int typeDescCount;//Not a standard member
 	u2* pConstantPoolTypes;
-	TypeDesc** pTypeDesc;			
+	TypeDesc** pTypeDesc;
 	TypeDescriptorInfo(u2 cpCount)
 	{
 		this->constPoolCount = (int) cpCount;

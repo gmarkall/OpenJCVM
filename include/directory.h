@@ -88,13 +88,13 @@ public:
 			pCustomComponents = NULL;
 		}
 	}
-	
+
 	virtual ~DirectoryComponent(){
 		if(pCustomComponents!=NULL)
 		{
 			for(u1 i=0;i<customCount;i++){
 				delete pCustomComponents[i];
-			}				
+			}
 		}
 		delete pCustomComponents;
 		delete pStaticFieldSize;

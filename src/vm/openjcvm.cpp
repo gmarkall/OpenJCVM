@@ -36,7 +36,7 @@ int testReadDescriptorComp(char* capFileName)
 	unsigned char* pDescriptorComponent = dataBuffer;
 
 	int iPosd = 0;
-	
+
 
 #define READU1 readU1(pDescriptorComponent,&iPosd)
 #define READU2 readU2(pDescriptorComponent,&iPosd)
@@ -58,7 +58,7 @@ int testReadDescriptorComp(char* capFileName)
 		u2 fieldcount = READU2;
 		u2 methodcount = READU2;
 		ClassDescriptorInfo* pcdi = new ClassDescriptorInfo(token,accessflag,*pThisClassRef,interfacecount,fieldcount,methodcount);
-		
+
 		int j=0;
 		for(j=0;j<interfacecount;j++)
 		{
@@ -158,7 +158,7 @@ CardApplet* buildAppletEngine(char* ijcFileName)
 
 	CardApplet* capp = (CardApplet*)buildApplet(dataBuffer,iDataLength);
 	capp->displayInfo();
-	
+
 	return capp;
 }
 

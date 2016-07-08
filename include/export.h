@@ -60,7 +60,7 @@ public:
 		delete pClassExport;
 		pClassExport = NULL;
 	};
-	
+
 	void displayInfo()
 	{
 		int i=0;
@@ -68,7 +68,7 @@ public:
 		COUT<<"\tExported Class Count: "<<this->classCount<<ENDL;
 		for(i=0;i<this->classCount;i++)
 		{
-			this->pClassExport[i]->displayInfo();			
+			this->pClassExport[i]->displayInfo();
 		}
 		COUT<<"End Export Component"<<ENDL;
 	}

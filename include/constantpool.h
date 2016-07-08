@@ -110,7 +110,7 @@ public:
 		switch(tag)
 		{
 		case 1:
-			pConstantPool[cpCount]=new ConstantClassInfo(tag,byte1,byte2);						
+			pConstantPool[cpCount]=new ConstantClassInfo(tag,byte1,byte2);
 			break;
 		case 2:
 			pConstantPool[cpCount] = new ConstantInstanceFieldRefInfo(tag,byte1,byte2,byte3);

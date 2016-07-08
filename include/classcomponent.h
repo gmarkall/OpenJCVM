@@ -72,7 +72,7 @@ public:
 
 	ClassInfo(u1 bitfield) : AbstractClassInfo(bitfield)
 	{
-		publicVirtualMethodTable = NULL;				
+		publicVirtualMethodTable = NULL;
 		packageVirtualMethodTable = NULL;
 
 		//this->superClassRef.classref<<ENDL;
@@ -89,7 +89,7 @@ public:
 	{
 		delete publicVirtualMethodTable;
 		delete packageVirtualMethodTable;
-		publicVirtualMethodTable = NULL;				
+		publicVirtualMethodTable = NULL;
 		packageVirtualMethodTable = NULL;
 	};
 
@@ -129,18 +129,18 @@ public:
 		{
 			if(0==i)
 			{
-				COUT<<"\tPublic virtual method table:"<<ENDL;				
+				COUT<<"\tPublic virtual method table:"<<ENDL;
 			};
-			COUT<<"\t\tMethod "<<i<<" : "<<(int)this->publicVirtualMethodTable[i]<<ENDL;			
+			COUT<<"\t\tMethod "<<i<<" : "<<(int)this->publicVirtualMethodTable[i]<<ENDL;
 		};
 
 		for (i=0; i<packageMethodTableCount;i++)
 		{
 			if(0==i)
 			{
-				COUT<<"\tPackage virtual method table:"<<ENDL;				
+				COUT<<"\tPackage virtual method table:"<<ENDL;
 			};
-			COUT<<"\t\tMethod "<<i<<" : "<<(int)this->packageVirtualMethodTable[i]<<ENDL;			
+			COUT<<"\t\tMethod "<<i<<" : "<<(int)this->packageVirtualMethodTable[i]<<ENDL;
         };
 	};
 };
@@ -175,5 +175,5 @@ public:
 		COUT<<"End Class Component"<<ENDL;
 	};
 };
-		
+
 #endif

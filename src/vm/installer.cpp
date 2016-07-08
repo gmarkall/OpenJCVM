@@ -18,7 +18,7 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 	else
 	{
 		iPos+=7;
-		
+
 		u1 appletMinVer  = dataBuffer[iPos++];
 		u1 appletMajVer  = dataBuffer[iPos++];
 		u1 appletFlags   = dataBuffer[iPos++];
@@ -28,12 +28,12 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 		u1* aid          = new u1[(int)aidLength];
 		for(int i=0;i<aidLength;i++)
 		{
-			aid[i]=dataBuffer[iPos++];						
+			aid[i]=dataBuffer[iPos++];
 		}
 
 		PackageInfo* pi = new PackageInfo(aid,aidLength,packageMajVer,packageMinVer);
 		newapplet->pHeader = new HeaderComponent(pi,appletMajVer,appletMinVer,appletFlags);
-		
+
 	}
 
 	//Read Directory Component
@@ -83,7 +83,7 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 	u1* pDebugComponent = new u1[sizes[TAG_DEBUG_COMP-1]];
 
 	int compLength = 0;
-	
+
 	while(iPos<dataLength-1)
 	{
 		switch(c1=readU1(dataBuffer,&iPos))
@@ -189,7 +189,7 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 			u1* aid          = new u1[(int)aidLength];
 			for(int i=0;i<aidLength;i++)
 			{
-				aid[i]=READU1;						
+				aid[i]=READU1;
 			}
 
 			PackageInfo* pi = new PackageInfo(aid,aidLength,packageMajVer,packageMinVer);
@@ -217,7 +217,7 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 
 	while(iPosl<classCompLength-1)
 	{
-	
+
 		u1 _c_bitfield = READU1;
 		AbstractClassInfo* pACI;
 		COUT<<"Class bit field: "<<(int)_c_bitfield<<ENDL;
@@ -246,7 +246,7 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 			for(i=0;i<(int)_c_publicMethodTableCount;i++)
 			{
 				(((ClassInfo*)pACI)->publicVirtualMethodTable)[i] = READU2;
-			
+
 			}
 
 			for(i=0;i<(int)_c_packageMethodTableCount;i++)
@@ -283,9 +283,9 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 		_c_value1 = READU1;
 		_c_value2 = READU1;
 		_c_value3 = READU1;
-		pCPC->addConst(_c_tag,_c_value1,_c_value2,_c_value3);		
+		pCPC->addConst(_c_tag,_c_value1,_c_value2,_c_value3);
 	}
-	
+
 	newapplet->pConstPool = pCPC;
 #undef READU2
 #undef READU1
@@ -344,7 +344,7 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 
 	u2 _s_dvc = READU2;
 	u2 _s_ndvc = READU2;
-	
+
 	pSfc->beginBuildNonDefaultValues(_s_dvc,_s_ndvc);
 	for(int isvc=0;isvc<(int)_s_ndvc;isvc++)
 	{
@@ -363,8 +363,8 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 #define READU2 readU2(pMethodComponent,&iPosm)
 
 	u1 handlerCount = READU1;
-	MethodComponent* pmc = new MethodComponent(handlerCount);	
-	
+	MethodComponent* pmc = new MethodComponent(handlerCount);
+
 	for(int im=0;im<handlerCount;im++)
 	{
 		pmc->pExceptionHandlers[im]->startOffset=READU2;
@@ -387,7 +387,7 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 		COUT<<"Method Offset: "<<(int)iPosm<<ENDL;
 
 		u1 flags = READU1;
-		
+
 		COUT<<"Flag = "<<(int)flags<<ENDL;
 		COUT<<"\tIs extended?"<<MethodComponent::isExtended(flags)<<ENDL;
 		COUT<<"\tIs abstract?"<<MethodComponent::isAbstract(flags)<<ENDL;
@@ -425,7 +425,7 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 		COUT<<"Class Count = "<<(int)classCount<<ENDL;
 
 		ExportComponent *pEC = new ExportComponent(classCount);
-		
+
 		for(int _ie=0;_ie<classCount;_ie++)
 		{
 			u2 _co = READU2;
@@ -468,7 +468,7 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 			u2 fieldcount = READU2;
 			u2 methodcount = READU2;
 			ClassDescriptorInfo* pcdi = new ClassDescriptorInfo(token,accessflag,*pThisClassRef,interfacecount,fieldcount,methodcount);
-		
+
 			int j=0;
 			for(j=0;j<interfacecount;j++)
 			{
@@ -557,6 +557,6 @@ AbstractApplet* buildApplet(unsigned char* dataBuffer, int dataLength)
 	}
 	else
 	{
-	return newapplet; 
+	return newapplet;
     }
 }

@@ -79,7 +79,7 @@ public:
 		}
 		if(pImport != NULL)
 		{
-			pImport->displayInfo();		
+			pImport->displayInfo();
 		}
 		if(pRefLoc != NULL)
 		{
@@ -109,7 +109,7 @@ class CardLibrary : public AbstractApplet
 public:
 	bool isThisLibrary(PackageInfo* pPI)
 	{
-		return (*(this->pHeader->pThisPackage) == *pPI);	
+		return (*(this->pHeader->pThisPackage) == *pPI);
 	}
 
 	void displayInfo()
@@ -130,7 +130,7 @@ public:
 		pApplet      = NULL;
 	};
 
-	virtual ~CardApplet() 
+	virtual ~CardApplet()
 	{
 		//AbstractApplet::~AbstractApplet();
 		//Louis: It is useless to call deconstructor explicitly.
@@ -190,7 +190,7 @@ public:
 	void displayInfo()
 	{
 		COUT<<ENDL<<"Begin Applet"<<ENDL;
-		AbstractApplet::displayInfo();		
+		AbstractApplet::displayInfo();
 		pApplet->displayInfo();
 		COUT<<"End applet!"<<ENDL;
 		COUT<<ENDL;

@@ -13,36 +13,36 @@ CardLibrary* buildJavaLang()
 	pAID[4]=0x62;
 	pAID[5]=0x0;
 	pAID[6]=0x1;
-	
+
 	PackageInfo* pPI = new PackageInfo(pAID,7,1,0);
-	
+
 	HeaderComponent* pHC = new HeaderComponent(pPI,2,1,0);
 
 	pCL->pHeader = pHC;
 
 	//===
 
-	ExportComponent* pEC = new ExportComponent(1);//12 should be the correct value. 
+	ExportComponent* pEC = new ExportComponent(1);//12 should be the correct value.
 
 	ClassExportInfo* pCEI_Object = new ClassExportInfo(0,0,1);
 	pCEI_Object->pStaticMethodOffsets[0] = NATIVE_METHOD_START + 0;
 	pEC->pClassExport[0] = pCEI_Object;
-	
+
 	pCL->pExport = pEC;
 
 	//===
-	
+
 	ClassComponent* pCC = new ClassComponent(0,1);
 
 	ClassInfo* pCI_Object = new ClassInfo(0);
 	pCI_Object->setPublicMethodTable(0,1);
 	pCI_Object->publicVirtualMethodTable[0] = NATIVE_METHOD_START + 1; //java/lang/Object.equals(Ljava/lang/Object;)Z
-	
+
 	pCC->pClasses[0] = pCI_Object;
 
 	pCL->pClass = pCC;
 
-	//=== 
+	//===
 	// Native function table
 	//===
 

@@ -51,14 +51,14 @@ s2 inline readS2(u1* dataBuffer, int* iPos)
 u4 inline readU4(u1* dataBuffer, int* iPos)
 {
 	u4 temp = ((u4)(dataBuffer[*iPos])<<24)+((u4)dataBuffer[*iPos+1]<<16)+((u4)(dataBuffer[*iPos+2])<<8)+(u4)dataBuffer[*iPos+3];
-	(*iPos) += 4;	
+	(*iPos) += 4;
 	return temp;
 };
 
 s4 inline readS4(u1* dataBuffer, int* iPos)
 {
 	s4 temp = ((s4)(dataBuffer[*iPos])<<24)+((s4)dataBuffer[*iPos+1]<<16)+((s4)(dataBuffer[*iPos+2])<<8)+(s4)dataBuffer[*iPos+3];
-	(*iPos) += 4;	
+	(*iPos) += 4;
 	return temp;
 };
 

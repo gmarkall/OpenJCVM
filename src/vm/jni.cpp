@@ -15,22 +15,22 @@ CardLibrary* buildJNI()
 	pAID[6]=0x0;
 	pAID[7]=0x1;
 	//AID on jni package is 0xA0:0xFF:0x00:0x00:0x00:0x00:0x00:0x01
-	
+
 	PackageInfo* pPI = new PackageInfo(pAID,8,1,0);//pAID, length ==8 , version 1.0
-	
+
 	HeaderComponent* pHC = new HeaderComponent(pPI,2,1,0);//version 2.1
 
 	pCL->pHeader = pHC;
 
 	//===
 
-	ExportComponent* pEC = new ExportComponent(1); 
+	ExportComponent* pEC = new ExportComponent(1);
 
 	ClassExportInfo* pCEI_JCFDriver = new ClassExportInfo(0,0,2);//2 static method
 	pCEI_JCFDriver->pStaticMethodOffsets[0] = NATIVE_METHOD_START + 2;
 	pCEI_JCFDriver->pStaticMethodOffsets[1] = NATIVE_METHOD_START + 3;
 	pEC->pClassExport[0] = pCEI_JCFDriver;
-	
+
 	pCL->pExport = pEC;
 
 	//===
@@ -38,7 +38,7 @@ CardLibrary* buildJNI()
 	//===
 	natives[2] = JCFDriver__methodMissing;
 	natives[3] = JCFDriver__registerApplet;
-	
+
 	return pCL;
 }
 
