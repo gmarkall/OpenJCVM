@@ -175,7 +175,6 @@ int main(int argc, char* argv[])
 		(*libItr)->displayInfo();
 	}
 
-	//testReadIJC(argv[1]);
 	//testReadDescriptorComp("Descriptor.cap");
 	testRunApplet(argv[i]);
 
