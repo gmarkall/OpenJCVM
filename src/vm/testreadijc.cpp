@@ -1,5 +1,6 @@
 /**
  * Copyright 2008 - present Oliver Lusing / Louis Liu
+ * Copyright 2016 Embecosm Limited
  *
  * This file is part of OpenJCVM; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
